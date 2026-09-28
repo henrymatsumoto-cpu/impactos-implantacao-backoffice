@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Impactos da Implantação · BackOffice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+ --bg:oklch(96.5% .012 260);--paper:oklch(99.4% .003 250);
+ --ink:oklch(24% .02 255);--ink2:oklch(42% .018 255);--ink3:oklch(58% .014 255);
+ --line:oklch(89% .01 255);--soft:oklch(95% .012 260);
+ --blue:oklch(48% .21 258);--red:oklch(52% .17 27);--redbg:oklch(95.5% .03 27);
+ --amber:oklch(55% .12 70);--amberbg:oklch(95.5% .04 80);
+ --navy:oklch(19% .05 260);--navy2:oklch(26% .06 260);--coral:oklch(70% .17 32);--coralbg:oklch(94% .04 32);
+ --green:oklch(50% .11 155);--greenbg:oklch(95.5% .035 155);
+ --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Literata,Georgia,serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--s5) var(--s8)}
+
+/* Hero — bloco navy Seazone */
+.hero{background:var(--navy);color:oklch(94% .01 260);padding:var(--s5) 0 var(--s7)}
+.hero-inner{max-width:1080px;margin:0 auto;padding:0 var(--s5)}
+.hero .masthead{border-bottom:1px solid oklch(35% .04 260);margin-bottom:var(--s5);padding-bottom:var(--s3)}
+.hero .wordmark{color:var(--paper);letter-spacing:.22em}
+.hero .wordmark span{color:oklch(72% .02 260)}
+.hero .mast-date{color:oklch(72% .02 260)}
+.hero .eyebrow{color:var(--coral);margin-bottom:var(--s3)}
+.hero h1{color:var(--paper);margin:0 0 var(--s5);max-width:20ch}
+.hero .lede{color:oklch(88% .01 260);max-width:66ch}
+.hero .meta{color:oklch(70% .02 260);margin-top:var(--s5)}
+.hero .meta b{color:var(--paper)}
+h1,h2,h3,h4,.k,.eyebrow,.lab,.tag,summary,th{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.eyebrow{font:700 12px/1 "Bricolage Grotesque";letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.04;margin:var(--s3) 0 var(--s5);max-width:20ch;font-weight:700}
+.lede{font-size:19px;max-width:66ch;color:var(--ink)}
+.meta{color:var(--ink3);font-size:14px;margin-top:var(--s4)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s3);margin:calc(-1 * var(--s7)) 0 var(--s7);position:relative;z-index:2}
+.nums div{background:var(--paper);border-radius:10px;padding:var(--s5) var(--s5) var(--s4);box-shadow:0 4px 24px oklch(20% .05 260 / .08),0 1px 3px oklch(20% .05 260 / .06)}
+.nums .k{font-size:36px;font-weight:700;line-height:1;color:var(--navy);font-family:"Bricolage Grotesque"}
+.nums .k.r{color:var(--coral)}
+.nums span{display:block;color:var(--ink2);font-size:13px;margin-top:var(--s3);line-height:1.5}
+h2{font-size:28px;margin:var(--s8) 0 var(--s4);font-weight:700}
+h3{font-size:21px;margin:var(--s6) 0 var(--s3);font-weight:700;display:flex;gap:var(--s3);align-items:baseline}
+h3 .no{color:var(--coral);font-size:15px;min-width:2ch;font-weight:700}
+h4{font-size:16px;margin:var(--s5) 0 var(--s3);font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em;font-size:12px}
+p{max-width:70ch;margin:0 0 var(--s3)}
+.muted{color:var(--ink2)}
+.area{padding:var(--s6) 0;border-top:2px solid var(--ink)}
+.area-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--s3);margin-bottom:var(--s4)}
+.area-head .who{color:var(--ink3);font-size:14px}
+.prob{padding:var(--s5) 0;border-top:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--s3) var(--s6);margin:var(--s3) 0}
+.lab{font:700 11.5px/1 "Bricolage Grotesque";letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:var(--s2)}
+.fix{background:var(--soft);border-radius:10px;padding:var(--s3) var(--s4);margin-top:var(--s3);max-width:78ch}
+.fix p:last-child{margin:0}
+.tw{overflow-x:auto;margin:var(--s3) 0}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--paper)}
+th{text-align:left;font:700 12px/1.3 "Bricolage Grotesque";color:var(--ink2);padding:var(--s2) var(--s3);border-bottom:1px solid var(--ink3);white-space:nowrap}
+td{padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr:hover td{background:var(--soft)}
+.tag{display:inline-block;font:700 12px/1 "Bricolage Grotesque";padding:5px 8px;border-radius:6px;white-space:nowrap}
+.tag.r{background:var(--redbg);color:var(--red)}
+.tag.o{background:var(--amberbg);color:var(--amber)}
+.tag.g{background:var(--greenbg);color:var(--green)}
+.tag.b{background:oklch(94% .04 258);color:var(--blue)}
+.bad{color:var(--red);font-weight:600}
+.tl{list-style:none;padding:0;margin:var(--s4) 0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:92px 1fr;gap:var(--s4);padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.tl b{font-family:"Bricolage Grotesque";color:var(--blue)}
+code{font-size:13px;background:var(--soft);padding:1px 5px;border-radius:4px}
+a{color:var(--blue)}
+ul{max-width:70ch;padding-left:20px}
+li{margin-bottom:var(--s2)}
+.pcm{display:grid;grid-template-columns:170px 1fr;margin:var(--s3) 0;border-top:1px solid var(--line)}
+.pcm>dt{font:700 12px/1.3 "Bricolage Grotesque";letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);padding:var(--s4) var(--s4) var(--s4) 0;border-bottom:1px solid var(--line)}
+.pcm>dd{margin:0;padding:var(--s4) 0;border-bottom:1px solid var(--line);min-width:0}
+.pcm>dd p:last-child{margin-bottom:0}
+.pcm>dt.mel{color:var(--blue);background:var(--soft);padding-left:var(--s4);border-radius:8px 0 0 8px}
+.pcm>dd.mel{background:var(--soft);padding:var(--s4) var(--s5);border-radius:0 8px 8px 0}
+.pattern{background:var(--navy);color:var(--paper);padding:var(--s6) var(--s7);border-radius:12px;margin:var(--s6) 0;max-width:none}
+.pattern h2{color:var(--paper);margin-top:0}
+.pattern p{color:oklch(88% .01 260);max-width:70ch}
+.pattern .k{color:var(--coral);font-family:"Bricolage Grotesque";font-weight:700}
+.ask{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:var(--s6);margin:var(--s7) 0}
+.ask ol{padding-left:20px;margin:0} .ask li{margin-bottom:var(--s3)}
+.ask b{font-family:"Bricolage Grotesque"}
+.src{color:var(--ink3);font-size:13px;margin-top:var(--s2)}
+.badge{display:inline-block;font:700 11px/1 "Bricolage Grotesque";padding:4px 7px;border-radius:5px;background:var(--soft);color:var(--ink2);letter-spacing:.05em;text-transform:uppercase;margin-right:var(--s2)}
+.pending{background:oklch(94% .03 80);color:var(--amber);border:1px dashed var(--amber);padding:var(--s4);border-radius:8px;margin:var(--s3) 0;font-family:"Bricolage Grotesque";font-size:14px;color:var(--amber)}
+@media (max-width:640px){.pcm{grid-template-columns:1fr} .pcm>dt{border-bottom:0;padding-bottom:0} .pcm>dt.mel,.pcm>dd.mel{border-radius:0} .wrap{padding:var(--s6) var(--s4)} .tl li{grid-template-columns:1fr;gap:var(--s1)}}
+.tabs{display:flex;gap:var(--s1);margin:var(--s7) 0 0;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.tab-btn{font:700 14px/1.2 "Bricolage Grotesque";background:transparent;border:0;padding:var(--s4) var(--s5);cursor:pointer;color:var(--ink3);border-bottom:3px solid transparent;margin-bottom:-2px;letter-spacing:.01em;transition:color .15s,border-color .15s}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--blue)}
+.tab-btn .count{display:inline-block;font-size:11px;color:var(--ink3);background:var(--soft);padding:2px 6px;border-radius:8px;margin-left:var(--s2);font-weight:500}
+.tab-btn.active .count{background:oklch(94% .04 258);color:var(--blue)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.tab-panel .area{border-top:0;padding-top:var(--s5)}
+.subgroup{margin:var(--s6) 0 0;padding:var(--s4) var(--s5);background:var(--soft);border-left:4px solid var(--blue);border-radius:0 8px 8px 0}
+.subgroup h3{margin:0;font-size:22px;color:var(--ink);display:block}
+.subgroup p{margin:var(--s2) 0 0;color:var(--ink2);font-size:14px;max-width:70ch}
+
+/* Horizontal timeline */
+.htl{margin:var(--s5) 0 var(--s7);overflow-x:auto;padding-bottom:var(--s3)}
+.htl-inner{display:flex;min-width:max-content;position:relative;padding:0;height:340px}
+.htl-inner::before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:var(--ink);z-index:1}
+.htl-event{width:170px;flex-shrink:0;height:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.htl-dot{width:14px;height:14px;background:var(--coral);border-radius:50%;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--coral);position:relative;z-index:3}
+.htl-connector{position:absolute;left:50%;width:2px;background:var(--ink);height:28px;transform:translateX(-50%);z-index:2}
+.htl-card{position:absolute;left:50%;transform:translateX(-50%);width:150px;padding:var(--s3);border-radius:6px;font:400 12.5px/1.4 Literata,Georgia,serif;z-index:2;background:var(--coralbg);color:oklch(45% .16 32);border:1px solid oklch(85% .07 32)}
+.htl-card.neutral{background:var(--soft);color:var(--ink);border-color:var(--line)}
+.htl-card b{font-family:"Bricolage Grotesque";display:block;margin-bottom:4px;font-size:13px;font-weight:700;letter-spacing:.02em}
+.htl-event.above .htl-card{bottom:calc(50% + 30px)}
+.htl-event.above .htl-connector{bottom:50%}
+.htl-event.below .htl-card{top:calc(50% + 30px)}
+.htl-event.below .htl-connector{top:50%}
+.htl-legend{display:flex;gap:var(--s4);margin-bottom:var(--s3);font-size:12px;color:var(--ink3);font-family:"Bricolage Grotesque";text-transform:uppercase;letter-spacing:.05em}
+.htl-legend span{display:flex;align-items:center;gap:6px}
+.htl-legend .sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.htl-legend .sw.r{background:var(--redbg);border:1px solid oklch(88% .06 27)}
+.htl-legend .sw.n{background:var(--soft);border:1px solid var(--line)}
+
+/* Cabeçalho institucional */
+.masthead{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:var(--s3);border-bottom:1px solid var(--line);margin-bottom:var(--s6)}
+.wordmark{font:700 14px/1 "Bricolage Grotesque";letter-spacing:.18em;color:var(--blue);text-transform:uppercase}
+.wordmark span{color:var(--ink2);font-weight:500;letter-spacing:.12em;margin-left:var(--s2)}
+.mast-date{font:500 13px/1 "Bricolage Grotesque";color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+
+/* Justificação editorial */
+.lede,.pattern p,.pcm > dd > p,p.src{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+
+/* Rodapé institucional */
+.instfoot{margin-top:var(--s8);padding-top:var(--s5);border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:var(--s4)}
+.instfoot .wm{font:700 14px/1.4 "Bricolage Grotesque";letter-spacing:.14em;color:var(--blue);text-transform:uppercase}
+.instfoot .wm span{display:block;color:var(--ink2);font-weight:500;letter-spacing:.08em;font-size:12px;margin-top:4px}
+.instfoot .who{font-size:13px;color:var(--ink3);text-align:right;line-height:1.6;font-family:"Bricolage Grotesque"}
+.instfoot .who b{color:var(--ink);font-weight:700;font-size:14px;display:block}
+
+/* Quadro consolidado — árvore */
+.qc{margin:var(--s4) 0 var(--s7);border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper)}
+.qc-area{border-bottom:1px solid var(--line)}
+.qc-area:last-child{border-bottom:0}
+.qc-area > summary{list-style:none;cursor:pointer;padding:var(--s4) var(--s5);background:var(--soft);font:700 20px/1.2 "Bricolage Grotesque";color:var(--ink);display:flex;justify-content:space-between;align-items:center;user-select:none;transition:background .15s}
+.qc-area > summary:hover{background:oklch(93% .01 255)}
+.qc-area > summary::-webkit-details-marker{display:none}
+.qc-area > summary::before{content:"▶";display:inline-block;font-size:11px;color:var(--blue);margin-right:var(--s3);transition:transform .2s;transform-origin:center}
+.qc-area[open] > summary::before{transform:rotate(90deg)}
+.qc-count{font:500 13px/1 "Bricolage Grotesque";color:var(--ink3);letter-spacing:.05em;text-transform:uppercase}
+.qc-sub{border-top:1px solid var(--line)}
+.qc-sub:first-of-type{border-top:0}
+.qc-sub > summary{list-style:none;cursor:pointer;padding:var(--s3) var(--s5) var(--s3) calc(var(--s5) + var(--s5));font:600 15px/1.2 "Bricolage Grotesque";color:var(--ink2);display:flex;justify-content:space-between;align-items:center;user-select:none;letter-spacing:.02em}
+.qc-sub > summary::-webkit-details-marker{display:none}
+.qc-sub > summary::before{content:"▶";display:inline-block;font-size:9px;color:var(--ink3);margin-right:var(--s2);transition:transform .2s}
+.qc-sub[open] > summary::before{transform:rotate(90deg)}
+.qc-sub > summary:hover{background:var(--soft);color:var(--ink)}
+.qc-sub > summary span:last-child{font-size:12px;color:var(--ink3);font-weight:500}
+.qc-probs{list-style:none;padding:0;margin:0;background:var(--paper)}
+.qc-probs li{display:grid;grid-template-columns:auto 1fr auto auto;gap:var(--s3) var(--s4);align-items:center;padding:var(--s3) var(--s5) var(--s3) calc(var(--s5) + var(--s6));border-top:1px solid var(--line);font-size:14px}
+.qc-probs li:first-child{border-top:0}
+.qc-probs .num{font:700 12px/1 "Bricolage Grotesque";color:var(--blue);min-width:20px}
+.qc-probs a{color:var(--ink);text-decoration:none;font-weight:500;transition:color .15s}
+.qc-probs a:hover{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.qc-probs .qc-size{font:400 13px/1.3 Literata,serif;color:var(--ink3);text-align:right;min-width:180px}
+.qc-probs li:hover{background:var(--soft)}
+@media (max-width:760px){.qc-probs li{grid-template-columns:auto 1fr;gap:var(--s2)} .qc-probs .qc-size{grid-column:2;text-align:left} .qc-probs .tag{grid-column:2;justify-self:start}}
+
+/* Highlight ao chegar num problema via âncora */
+.prob.hl{background:var(--coralbg);transition:background 1.5s ease-out}
+
+/* Blocos de problema colapsáveis */
+.prob > h3{cursor:pointer;user-select:none;transition:color .15s;position:relative;padding-right:calc(var(--s5) + var(--s2))}
+.prob > h3:hover{color:var(--blue)}
+.prob > h3::after{content:"";position:absolute;right:2px;top:50%;width:9px;height:9px;border-right:2px solid var(--ink3);border-bottom:2px solid var(--ink3);transform:translateY(-70%) rotate(45deg);transition:transform .2s ease-out}
+.prob.collapsed > h3::after{transform:translateY(-30%) rotate(-45deg)}
+.prob.collapsed > *:not(h3){display:none}
+.prob.collapsed{padding-bottom:var(--s3);padding-top:var(--s3)}
+
+</style></head><body>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div class="masthead">
+   <div class="wordmark">Seazone <span>· Backoffice Franquias</span></div>
+   <div class="mast-date">Documento interno · 28/09/2026</div>
+  </div>
+  <div class="eyebrow">Para Carol Espindola · Diretora de Franquias</div>
+  <h1>O que a Implantação está causando no BackOffice</h1>
+  <p class="lede">Consolidado dos impactos que a área de Implantação vem gerando nas quatro frentes do BackOffice entre <b>15/06 e 25/09/2026</b>. O padrão é o mesmo em todas: ferramentas e automações entram em produção sem estar integradas ao processo operacional, e o BackOffice absorve o retrabalho, o custo financeiro e a perda de fornecedores. Cada frente traz o levantamento do seu coordenador — o material completo, com evidências, está linkado no fim de cada bloco.</p>
+  <p class="meta">Compilado por <b>Rayanne Oliveira</b> · 25/09/2026 · fontes: David Soares (Adm/Fin), Henry Matsumoto (Fornecedores &amp; Compras), Operação/Qualidade de Franquias (Ocorrências e Fiscalização).</p>
+ </div>
+</section>
+
+<main class="wrap">
+
+<div class="nums">
+ <div><div class="k r">R$ 40,1 mil</div><span>de impacto financeiro identificado só em setembro (repasse dobrado + comissão acima do contrato + frete errado)</span></div>
+ <div><div class="k r">157</div><span>imóveis hoje sem operação vinculada — comissão sai errada</span></div>
+ <div><div class="k r">78</div><span>imóveis com quartos e travesseiros zerados por cima da vistoria</span></div>
+ <div><div class="k r">85</div><span>cards de ocorrência abertos sem evidência (0 puderam ser aplicados)</span></div>
+ <div><div class="k">27</div><span>dias até a liderança saber do conflito Maraú (perda de fornecedora exclusiva)</span></div>
+ <div><div class="k">10</div><span>fotógrafos parados no funil de contratação (até 153 dias)</span></div>
+ <div><div class="k">1</div><span>de 73 proprietários cadastrados chegou a comprar na Lojinha</span></div>
+</div>
+
+<div class="pattern">
+<h2>O padrão que se repete</h2>
+<p>Nas três frentes o desenho é o mesmo: <span class="k">a Implantação recebe uma ferramenta pronta</span> — automação Pipefy→Sapron, Lojinha, agente de itens, artefato de fotógrafo, calculadora de enxoval, automação BizOps de ocorrências — <span class="k">e não integra a ferramenta ao processo operacional</span>. Quando o problema aparece, o BackOffice descobre semanas depois: pela reserva vendida com taxa errada, pelo fornecedor que já pediu distrato, pelo relatório de comissão do mês, pela leva de cards de ocorrência que não podem ser aplicados.</p>
+<p>Um agravante: quando <span class="k">a Operação ofereceu construir a automação de ocorrências dentro da régua nova</span>, a oferta foi recusada — e a automação seguiu do lado da Implantação/BizOps, sem a régua. Somam-se a isso <span class="k">handovers ruins</span> (saídas da Evelly em agosto e dos coordenadores em 17/09) e <span class="k">bases desencontradas</span> entre Pipefy, Sapron e o artefato.</p>
+<p>O ponto para a diretoria é este: a discussão não é sobre um erro pontual em um imóvel, é sobre a rotina de entregar ferramenta sem assumir a operação dela — e de recusar apoio quando outra área se oferece para ajudar a fazer certo.</p>
+</div>
+
+<h2>Quando começou</h2>
+<div class="htl-legend">
+ <span><i class="sw n"></i>marco / recorte</span>
+ <span><i class="sw r"></i>problema em produção</span>
+</div>
+<div class="htl">
+ <div class="htl-inner">
+  <div class="htl-event above">
+   <div class="htl-card neutral"><b>15/06</b>Início do recorte de Fornecedores &amp; Compras (Henry).</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot" style="background:var(--ink);box-shadow:0 0 0 2px var(--ink)"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot" style="background:var(--ink);box-shadow:0 0 0 2px var(--ink)"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card neutral"><b>24/06</b>Início do recorte de Adm/Fin (David).</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card"><b>15/07</b>Automação Pipefy→Sapron em produção — grava por cima do que já estava certo.</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card"><b>24/07</b>1º imóvel com quartos zerados e 1ª taxa de R$ 20.</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card neutral"><b>13/08</b>Régua v2 de ocorrências no ar — nova classificação, teto, evidência.</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot" style="background:var(--ink);box-shadow:0 0 0 2px var(--ink)"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card"><b>26–31/08</b>27 cards BizOps abertos com régua antiga, sem evidência.</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card"><b>27/08</b>App de vistoria grava direto no Sapron — 2 sistemas no mesmo campo.</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card"><b>Agosto</b>Pico: 70 zeramentos + 52 taxas de R$ 20. Saída da Evelly.</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card"><b>08–14/09</b>27 repasses de implantação lançados em dobro (R$ 6.300).</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card"><b>17/09</b>Saída dos coordenadores da Implantação — bases começam a divergir.</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card"><b>22/09</b>Fornecedores é avisado do conflito Maraú — 27 dias depois. Distrato em 24/09.</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot"></div>
+  </div>
+  <div class="htl-event below">
+   <div class="htl-dot"></div>
+   <div class="htl-connector"></div>
+   <div class="htl-card"><b>23–25/09</b>Nova leva: 58 cards de ocorrência sem evidência (32 + 26).</div>
+  </div>
+  <div class="htl-event above">
+   <div class="htl-card neutral"><b>25/09</b>Data deste consolidado.</div>
+   <div class="htl-connector"></div>
+   <div class="htl-dot" style="background:var(--ink);box-shadow:0 0 0 2px var(--ink)"></div>
+  </div>
+ </div>
+</div>
+
+<h2>Quadro geral consolidado</h2>
+<p class="muted" style="font-size:14px;margin-top:calc(var(--s5) * -1);margin-bottom:var(--s4)">Clique em uma área para retrair · clique em um problema para ir até o detalhamento.</p>
+
+<div class="qc">
+ <details class="qc-area" open>
+  <summary>Adm/Financeiro <span class="qc-count">9 problemas</span></summary>
+  <details class="qc-sub">
+   <summary>Despesas <span>3 problemas</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">1</span><a href="#prob-af-1">Repasse de implantação em dobro</a><span class="qc-size">27 imóveis · R$ 6.300</span><span class="tag o">Adm/Fin cancelando</span></li>
+    <li><span class="num">2</span><a href="#prob-af-2">Conta, operação e comissão sobrescritas</a><span class="qc-size">15 casos</span><span class="tag o">a conferir</span></li>
+    <li><span class="num">3</span><a href="#prob-af-3">Imóvel entra sem vínculo com a operação</a><span class="qc-size">157 imóveis · R$ 33 mil/mês</span><span class="tag o">em conversa com tech</span></li>
+   </ol>
+  </details>
+  <details class="qc-sub">
+   <summary>Taxa de limpeza <span>6 problemas</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">4</span><a href="#prob-af-4">Taxa de limpeza de R$ 20 gravada pela automação</a><span class="qc-size">60 gravações · 55 imóveis</span><span class="tag g">sem caso desde 15/09</span></li>
+    <li><span class="num">5</span><a href="#prob-af-5">Automação grava a taxa por cima da vistoria</a><span class="qc-size">77 imóveis</span><span class="tag g">sem caso desde 19/09</span></li>
+    <li><span class="num">6</span><a href="#prob-af-6">Quartos e travesseiros zerados</a><span class="qc-size">78 imóveis</span><span class="tag r">defeito no código</span></li>
+    <li><span class="num">7</span><a href="#prob-af-7">Capacidade e banheiro zerados pela automação</a><span class="qc-size">4 imóveis</span><span class="tag o">a conferir</span></li>
+    <li><span class="num">8</span><a href="#prob-af-8">Travesseiro fora da regra</a><span class="qc-size">6 imóveis</span><span class="tag r">aberto</span></li>
+    <li><span class="num">9</span><a href="#prob-af-9">Capacidade maior do que as camas comportam</a><span class="qc-size">5 imóveis</span><span class="tag r">aberto</span></li>
+   </ol>
+  </details>
+ </details>
+
+ <details class="qc-area" open>
+  <summary>Fornecedores &amp; Compras <span class="qc-count">7 problemas</span></summary>
+  <details class="qc-sub">
+   <summary>Loja Seazone <span>2 problemas</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">1</span><a href="#prob-fc-1">Link da Lojinha não é enviado ao proprietário</a><span class="qc-size">73 cadastros · 1 compra</span><span class="tag r">alta</span></li>
+    <li><span class="num">2</span><a href="#prob-fc-2">Agente de itens faltantes roda sem uso</a><span class="qc-size">101 listas · 4× ao dia</span><span class="tag o">média</span></li>
+   </ol>
+  </details>
+  <details class="qc-sub">
+   <summary>Fotógrafos <span>4 problemas</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">3</span><a href="#prob-fc-3">Maraú — franquia agendando direto, distrato de fotógrafa exclusiva</a><span class="qc-size">27 dias de silêncio · 2 imóveis parados</span><span class="tag r">alta</span></li>
+    <li><span class="num">4</span><a href="#prob-fc-4">Pirenópolis — cadastro errado e sem prospecção</a><span class="qc-size">região sem fotógrafo por meses</span><span class="tag r">alta</span></li>
+    <li><span class="num">5</span><a href="#prob-fc-5">Fotógrafos parados no funil de contratação</a><span class="qc-size">10 no artefato · até 153 dias</span><span class="tag r">alta</span></li>
+    <li><span class="num">6</span><a href="#prob-fc-6">Handover e perda de conhecimento (Evelly, coords)</a><span class="qc-size">solicitações repetidas · alertas quebrados</span><span class="tag o">média</span></li>
+   </ol>
+  </details>
+  <details class="qc-sub">
+   <summary>Enxoval <span>1 problema</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">7</span><a href="#prob-fc-7">Enxoval enviado à franquia errada (SRS1005)</a><span class="qc-size">1.100 km de erro · R$ 592</span><span class="tag o">média</span></li>
+   </ol>
+  </details>
+ </details>
+
+ <details class="qc-area" open>
+  <summary>Qualidade &amp; Fiscalização <span class="qc-count">7 problemas</span></summary>
+  <details class="qc-sub">
+   <summary>Ocorrências <span>7 problemas</span></summary>
+   <ol class="qc-probs">
+    <li><span class="num">1</span><a href="#prob-qf-1">Recusa em criar a automação de ocorrências dentro da régua</a><span class="qc-size">oferta da Operação recusada</span><span class="tag o">processo</span></li>
+    <li><span class="num">2</span><a href="#prob-qf-2">Automação BizOps fora da régua e sem regulação de tempo</a><span class="qc-size">27 cards · 19 franquias · 26–31/08</span><span class="tag g">corrigida a pedido</span></li>
+    <li><span class="num">3</span><a href="#prob-qf-3">Cards de ocorrência sem evidência</a><span class="qc-size">85 cards em 4 levas · 0 aplicáveis</span><span class="tag r">crítico</span></li>
+    <li><span class="num">4</span><a href="#prob-qf-4">Vistoria sem instrução de correção para a franquia</a><span class="qc-size">todas as franquias · mesmo erro se repete</span><span class="tag g">comunicação ajustada</span></li>
+    <li><span class="num">5</span><a href="#prob-qf-5">Chamados de implantação na Central de Atividades de ocorrência</a><span class="qc-size">fila poluída · encerramento manual</span><span class="tag g">corrigido</span></li>
+    <li><span class="num">6</span><a href="#prob-qf-6">Mensagens de vistoria dentro de chamado de ocorrência</a><span class="qc-size">conversa misturada · prazo perdido</span><span class="tag g">corrigido</span></li>
+    <li><span class="num">7</span><a href="#prob-qf-7">Pedido de MCP próprio em vez de seguir régua</a><span class="qc-size">58 cards sem evidência motivaram ajuste</span><span class="tag g">resolvido via prompt</span></li>
+   </ol>
+  </details>
+ </details>
+</div>
+
+<nav class="tabs" role="tablist">
+ <button class="tab-btn active" data-tab="admfin" role="tab">Adm/Financeiro <span class="count">9</span></button>
+ <button class="tab-btn" data-tab="forn" role="tab">Fornecedores &amp; Compras <span class="count">7</span></button>
+ <button class="tab-btn" data-tab="qual" role="tab">Qualidade &amp; Fiscalização <span class="count">7</span></button>
+</nav>
+
+<div class="tab-panel active" id="tab-admfin" role="tabpanel">
+<!-- ================== ADM/FIN ================== -->
+<section class="area">
+<div class="area-head">
+ <h2 style="margin:0">1 · Adm/Financeiro</h2>
+ <span class="who">Levantado por <b>David Soares</b> · 24/06 a 24/09/2026</span>
+</div>
+<p class="lede">A maior parte não é erro de digitação: é a <b>automação que liga o Pipefy ao Sapron</b>, no ar desde 15/07, gravando por cima de dado que já estava certo. É por isso que os casos têm "dois, três meses" de arraste.</p>
+
+<div class="subgroup">
+ <h3>▍Despesas</h3>
+ <p>Lançamentos financeiros e vínculos que impactam repasse e comissão das franquias.</p>
+</div>
+
+<section class="prob" id="prob-af-1"><h3><span class="no">1</span>Repasse de implantação lançado em dobro</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>27 imóveis</b> · <b>R$ 6.300</b> · entre 08 e 14/09.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Automação do Pipefy lançou <code>Onboarding_Administrative</code> e a analista Ana Carolina lançou o mesmo repasse à mão. As duas despesas ficaram aprovadas.</p></dd>
+ <dt>Onde bate</dt><dd><p>Financeiro. Adm/Fin está cancelando as duplicadas antes do fechamento de setembro.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Definir um único caminho para o repasse — só a automação ou só o lançamento manual. Enquanto houver os dois, o erro volta.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-2"><h3><span class="no">2</span>Conta, operação e comissão sobrescritas</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>8 contas bancárias</b> trocadas pela automação (16 a 31/07) + <b>5 operações</b> gravadas pelo app de vistoria (LFH0306, OCN0901, RRC0206, SPN0102, VIL0023) + <b>2 comissões</b> pela vistoria (PQA0011, RUT0001).</p></dd>
+ <dt>O que aconteceu</dt><dd><p>7 das 8 contas trocadas eram de imóveis que mudaram de franquia nos 60 dias anteriores — a rota de dados bancários teve defeito de sobrescrita corrigido em 08/07. As operações e comissões gravadas pela vistoria estão em conferência com o Financeiro.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Cada campo do cadastro com um único sistema responsável. Automação só grava quando o card traz valor.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-3"><h3><span class="no">3</span>Imóvel entra sem vínculo com a operação certa</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>157 imóveis</b> hoje sem operação (89 ativos + 62 em Onboarding) · impacto medido de <b>R$ 33.233</b> em comissão acima do contrato em setembro/2026.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>A automação grava a franquia do imóvel mas não grava a operação. A comissão vem da operação — sem vínculo, sai o percentual padrão (8%), acima do contrato de várias franquias.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Em desenvolvimento com a tech: o imóvel passa a herdar a operação pelo prefixo do código do empreendimento, sem depender de quem cadastra.</p></dd>
+</dl>
+</section>
+
+<div class="subgroup">
+ <h3>▍Taxa de limpeza</h3>
+ <p>Cadastro de imóvel gravado errado, afetando o valor cobrado do hóspede na taxa de limpeza.</p>
+</div>
+
+<section class="prob" id="prob-af-4"><h3><span class="no">4</span>Taxa de limpeza de R$ 20 gravada pela automação</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>60 gravações</b> em <b>55 imóveis</b> · 24/07 a 14/09.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Era o valor de fallback da automação quando o card não tinha dados. Metade dos casos levou mais de 4 h até alguém mexer. Em 28 deles a correção foi manual, quase sempre pela Caroline Peçanha (Implantação).</p></dd>
+ <dt>Onde bate</dt><dd><p>Taxa de limpeza da reserva. Nenhuma reserva foi vendida com taxa abaixo — a proteção foi manual.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Quando faltar dado, nem a automação nem o app de vistoria devem gravar taxa: deixar em branco e avisar, em vez de gravar um número que parece válido.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-5"><h3><span class="no">5</span>Automação grava a taxa por cima da vistoria</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>77 imóveis</b> · 28/08 a 18/09.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Dois sistemas gravando o mesmo campo — ganha quem grava por último. A vistoria começou a usar a régua em 17/09; antes disso gravava valores como R$ 20 e R$ 80.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>A taxa precisa de um único dono. A automação deveria parar de gravar taxa em imóvel que já passou pela vistoria.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-6"><h3><span class="no">6</span>Quartos e travesseiros zerados por cima da vistoria</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>78 imóveis</b> · 81 disparos · defeito segue no código.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Quando o analista marca "Enviar configuração" com o card ainda vazio, a automação grava <b>0 quartos e 0 travesseiros</b>. Exemplo do FFS1110 em 19/09: 11h21 a vistoria grava 1 quarto e 4 travesseiros, 12h03 a automação zera. Sem quarto, o imóvel cai na faixa errada da régua.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p><b>Flávio Nieland:</b> não mandar quartos e travesseiros quando o card vier vazio. <b>Implantação:</b> só marcar "Enviar configuração" com o card preenchido.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-7"><h3><span class="no">7</span>Capacidade e banheiro zerados pela automação</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>4 imóveis</b>: CSI2302 (29/07), VAC4303 (04/08), OAZ0514 (11/08), SAA0214 (03/09).</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Três foram corrigidos. O OAZ0514, em Onboarding, segue sem capacidade e sem banheiro cadastrados.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Automação não grava campo vazio. Conferir e corrigir o OAZ0514 antes de ativar.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-8"><h3><span class="no">8</span>Travesseiro fora da regra</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>6 imóveis</b> — a fronha é cobrada pelo travesseiro do cadastro, então a taxa sai errada.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Travesseiro deveria ser calculado a partir das camas, sem digitação. O card do Pipefy precisa ter as mesmas camas do Sapron.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-af-9"><h3><span class="no">9</span>Capacidade maior do que as camas comportam</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>5 imóveis</b>. VDZ0005 tem 10 hóspedes cadastrados para 8 camas — R$ 800/ano de enxoval a menos.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>O formulário da vistoria deveria recusar capacidade maior do que as camas comportam.</p></dd>
+</dl>
+</section>
+
+<p class="src">Fonte completa (com todos os imóveis, IDs de despesa, histórico do Sapron e trechos do código): relatório do David Soares em 24/09/2026.</p>
+</section>
+</div>
+
+<div class="tab-panel" id="tab-forn" role="tabpanel">
+<!-- ================== FORNECEDORES ================== -->
+<section class="area">
+<div class="area-head">
+ <h2 style="margin:0">2 · Fornecedores &amp; Compras</h2>
+ <span class="who">Levantado por <b>Henry Matsumoto</b> · 15/06 a 25/09/2026</span>
+</div>
+<p class="lede">Ferramentas foram entregues prontas (Lojinha, agente de itens, artefato) e não foram integradas ao processo. Fornecedores é notificado semanas depois de conflitos — quando é notificado.</p>
+
+<div class="subgroup">
+ <h3>▍Loja Seazone</h3>
+ <p>Ferramenta de compra pelo proprietário e agente automático de itens faltantes — entregues, mas sem integração ao processo.</p>
+</div>
+
+<section class="prob" id="prob-fc-1"><h3><span class="no">1</span>Link da Lojinha não é enviado ao proprietário</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>73</b> proprietários cadastrados · <b>1</b> compra · 2 pedidos cancelados · 3 cliques/dia médios no Mercado Livre. 245 commits desde 25/08 sem retorno comercial.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Ferramenta ajustada para o proprietário comprar itens diretamente, mas a Implantação não integrou o envio do link à rotina. Em 21/09 o responsável reconheceu no Slack que ainda colocaria o link no processo.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Definir em que etapa, com qual mensagem e qual responsável envia o link ao proprietário — com data de implementação.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-fc-2"><h3><span class="no">2</span>Agente de itens faltantes roda sem uso</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>101 listas</b> geradas · 4 rodadas/dia desde 23/09 · 17,6 MB e 8 min de processamento por dia sem link chegar a ninguém.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Reduzir para 1 rodada diária ou disparo por evento até que exista processo definido de envio.</p></dd>
+</dl>
+</section>
+
+<div class="subgroup">
+ <h3>▍Fotógrafos</h3>
+ <p>Pipeline de contratação, cadastros regionais, conflitos de fornecedor exclusivo e perda de conhecimento após saídas.</p>
+</div>
+
+<section class="prob" id="prob-fc-3"><h3><span class="no">3</span>Maraú — franquia agendando direto com a fotógrafa</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>27 dias</b> entre o conflito (26/08) e a notificação a Fornecedores (22/09). Distrato da fotógrafa (única profissional da região) em 24/09.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Implantação transferiu o agendamento para a franquia sem comunicar a liderança e manteve mediação em grupo de WhatsApp por semanas. Resultado: perda total do fornecedor exclusivo, 2 imóveis parados sem foto.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>SLA de notificação a Fornecedores quando qualquer coisa sai do planejado. Mediação em WhatsApp com franquia e fornecedor não substitui aviso à liderança.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-fc-4"><h3><span class="no">4</span>Pirenópolis — cadastro errado e sem prospecção</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p>Região sem fotógrafo profissional por meses. Base Pipefy tinha 2 fotógrafos: um mora em Brasília (não atende), outro sem retorno desde 09/06.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Fornecedores precisou prospectar por conta própria e cadastrou 2 fotógrafos locais em 23/09. O COO já indicou em 14/09 que a prospecção é do Comercial, não da Implantação.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Não bloquear cadastro em base própria de fornecedor que não é atualizada. Escalar prospecção pelo canal certo.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-fc-5"><h3><span class="no">5</span>Fotógrafos parados no funil de contratação</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>10 fotógrafos</b> parados no artefato (sem treino, teste ou contrato) + <b>3</b> no Pipefy legado até <b>153 dias</b>. Imbituba já distratou fotógrafo local porque o substituto ficou "travado em treinamento por mais de 2 meses".</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Agilizar pipeline de contratação. Sincronizar bases Pipefy × artefato após turnover. Sinalizações no Slack em 09/07, 28/07 e 14/08 foram ignoradas.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-fc-6"><h3><span class="no">6</span>Handover e perda de conhecimento</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p>Saídas na Implantação (Evelly em agosto, coordenadores em 17/09) geram pedidos repetidos de funcionalidades já existentes e alertas automatizados que deixaram de funcionar.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Bases divergentes entre Pipefy e artefato: distratos não registrados (Maurício Oliveira, Luiz Felipe), fotógrafos inativos no artefato mas ativos no Pipefy (Rodrigo D'Ávila, Juan Manuel, Igor Strina, Angelo Ouriques), Erick Nascimento duplicado. Bot "GOPs" criado por Fornecedores em 24/09 identificou 6 grupos acima do limite — o alerta original tinha parado de rodar.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Documentação de transição validada com o novo responsável antes da transferência. Auditoria de bases após cada turnover.</p></dd>
+</dl>
+</section>
+
+<div class="subgroup">
+ <h3>▍Enxoval</h3>
+ <p>Pedidos de enxoval processados pela calculadora e despachados às franquias.</p>
+</div>
+
+<section class="prob" id="prob-fc-7"><h3><span class="no">7</span>Enxoval enviado à franquia errada (SRS1005)</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>R$ 592</b> de frete devolução (R$ 520,95 + R$ 71,05 imposto). Enxoval despachado 1.100 km longe do destino (Maceió/AL em vez de Ilhéus/BA).</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Erro humano na calculadora antiga: analista trocou o código do imóvel mas manteve a franquia do pedido anterior. Coordenadora CS Onboarding validou: <i>"foi um erro manual da analista na escolha da franquia"</i>. Custo descontado da comissão do fornecedor (RM).</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>A calculadora nova deve travar a franquia pelo código do imóvel — não deixar campo livre para digitação inconsistente.</p></dd>
+</dl>
+</section>
+
+<p class="src">Fonte completa: <a href="https://henrymatsumoto-cpu.github.io/html-tasks/relatorio-impactos-implantacao.html" target="_blank">relatório do Henry Matsumoto</a>, 25/09/2026.</p>
+</section>
+</div>
+
+<div class="tab-panel" id="tab-qual" role="tabpanel">
+<!-- ================== QUALIDADE & FISCALIZAÇÃO ================== -->
+<section class="area">
+<div class="area-head">
+ <h2 style="margin:0">3 · Qualidade &amp; Fiscalização</h2>
+ <span class="who">Levantado pela <b>Operação · Qualidade de Franquias</b> · agosto e setembro/2026</span>
+</div>
+<p class="lede">A interação com a Implantação vem gerando cards de ocorrência que <b>não podem ser aplicados</b>: classificação pela régua antiga, sem evidência e sem controle de volume por franquia. Todas as correções listadas abaixo partiram de pedidos e explicações da Operação — a régua nova (v2, no ar desde 13/08) não chegou como instrução ao time de Tech/BizOps que construiu as automações.</p>
+
+<div class="subgroup">
+ <h3>▍Ocorrências</h3>
+ <p>Abertura de ocorrências (automação BizOps, abertura manual e vistoria) fora da régua v2 — cards sem evidência, sem teto por franquia e chamados de implantação caindo na fila de ocorrências.</p>
+</div>
+
+<section class="prob" id="prob-qf-1"><h3><span class="no">1</span>Recusa em criar a automação de ocorrências dentro da régua</h3>
+<dl class="pcm">
+ <dt>O que aconteceu</dt><dd><p>Em reunião com a Larissa (Implantação), a Operação apresentou a régua nova — códigos, pontuação, teto por franquia e exigência de evidência — e ofereceu <b>construir ela mesma a automação de abertura das ocorrências</b>, já dentro da régua. A oferta foi recusada.</p></dd>
+ <dt>Consequência</dt><dd><p>A automação seguiu do lado da Implantação/BizOps, sem as regras da régua nova. Os problemas 2 e 7 desta seção são efeito direto dessa decisão.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Aceitar apoio da área dona do processo quando a mudança é grande. A régua continuou chegando à Implantação porque a Operação a levou — a cada problema encontrado, ponto a ponto.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-2"><h3><span class="no">2</span>Automação BizOps fora da régua e sem regulação de tempo</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>27 cards</b> · <b>19 franquias</b> · 26 a 31/08 · remetente <code>bizops@seazone.com.br</code>.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>Todos com o mesmo texto: <i>"A franquia está há Xh sem responder desde a última cobrança de adequação do imóvel &lt;código&gt; (SLA: 48h), com silêncio confirmado pelo agente"</i>. Três defeitos empilhados:</p>
+ <ul>
+   <li><b>Classificação errada:</b> entram com subcategoria <code>3.2</code>, que na régua v2 é "Avaliação do hóspede com nota 1". O código correto é <code>10.2 — Não responder na Central de Atividades</code>, teto de 1 por franquia/mês.</li>
+   <li><b>Sem teto por franquia:</b> abre um card por imóvel. Naihana Loyola Andriani recebeu 3; outras 6 franquias receberam 2 cada.</li>
+   <li><b>Tempo sem regulação:</b> SLA declarado é 48 h, cards chegaram com silêncio de 61 h a 600 h (média 227 h ≈ 9,5 dias); 11 dos 27 passam de 10 dias. Sem prova anexada e sem ninguém conferir antes do card virar ocorrência.</li>
+ </ul></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Ajustado <b>a pedido da Operação</b>. Explicamos ponto a ponto o que estava fora da régua e a automação foi corrigida: 10.2 no lugar de 3.2, teto de 1 card por franquia/mês, abertura só com SLA vencido e link do chamado. <b>Os 27 cards de agosto não foram aplicados.</b></p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-3"><h3><span class="no">3</span>Cards de ocorrência sem evidência</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>85 cards</b> em 4 levas · nenhum passível de pontuação pela régua v2.</p>
+ <div class="tw"><table><thead><tr><th>Leva</th><th>Período</th><th class="n">Cards</th><th>Evidência</th></tr></thead><tbody>
+ <tr><td>Automação BizOps (3.2 régua antiga)</td><td>26–31/08</td><td class="n">27</td><td>nenhuma</td></tr>
+ <tr><td>Vistoria (Ana Paula Friedrich + BCA1004)</td><td>agosto</td><td class="n">7</td><td>2 com print cortado</td></tr>
+ <tr><td>Morosidade franquia Jessica Cristine (2.2)</td><td>23/09</td><td class="n">32</td><td>link de inconformidades abre dizendo "todos os itens mínimos em dia"</td></tr>
+ <tr><td>Abertura manual (Larissa 24 + Caroline 2)</td><td>24–25/09</td><td class="n">26</td><td>nenhuma</td></tr>
+ </tbody></table></div></dd>
+ <dt>O que aconteceu</dt><dd><p>Pela régua v2, ocorrência sem evidência não pontua. Prints, quando existem, são cortados. Volume por franquia continua sendo um card por imóvel — Ivan Carlos Breitenbach e Leonardo Silva Rispoli Alves concentram 16 dos 26 cards de 24–25/09.</p></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Explicamos o padrão mínimo de evidência (link do chamado ou print completo, com data e remetente visíveis). Os cards que chegaram sem prova não foram aplicados.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-4"><h3><span class="no">4</span>Vistoria sem instrução de correção para a franquia</h3>
+<dl class="pcm">
+ <dt>O que aconteceu</dt><dd><p>A franquia faz a vistoria, preenche o formulário e a inconformidade nasce ali. No chat, porém, vai só o aviso genérico de que foram encontradas divergências — sem apontar o item errado nem pedir reenvio corrigido. Ana Paula Friedrich: 6 cards (PVN0001, PVN0006, PVN0009, PVN0010, PVN0011, PVN0012), só 2 com evidência. Tiago dos Santos, BCA1004: registrado como "falta de retorno", mas o problema de fundo é o mesmo — identificação incorreta de ambientes. O mesmo erro aparece com rótulos diferentes, escondendo o volume real.</p></dd>
+ <dt>Risco</dt><dd><p>A vistoria não é devolvida para correção. A implantação segue com ambientes e capacidade de hóspedes errados — e esse é o documento que vai direto ao proprietário. Como o erro se repete em franquias diferentes, o problema está no formulário e nas instruções, não em descuido individual.</p></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Ajustado depois de a Operação levar o caso. A comunicação da vistoria passou a trazer a evidência do erro e a orientação objetiva do que a franquia precisa ajustar.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-5"><h3><span class="no">5</span>Chamados de implantação caindo na Central de Atividades de ocorrência</h3>
+<dl class="pcm">
+ <dt>O que aconteceu</dt><dd><p>Chamados de implantação (vistoria, implantação nova, fotografia, adequação) apareciam na página de <b>Ocorrência</b> da Central de Atividades, que é a fila usada para comunicar penalidades às franquias (prazo de 48 h).</p></dd>
+ <dt>Impacto</dt><dd><p>A fila de ocorrências fica poluída. A franquia recebe como ocorrência (que tem caráter de penalidade) um chamado que é só etapa de implantação. E a gestão precisa separar e encerrar à mão o que não é dela.</p></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Casos enviados à Ray, que explicou o problema à Larissa. Os chamados indevidos foram encerrados manualmente e os de implantação deixaram de cair na página de Ocorrência.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-6"><h3><span class="no">6</span>Mensagens de vistoria dentro de chamado de ocorrência</h3>
+<dl class="pcm">
+ <dt>O que aconteceu</dt><dd><p>A automação da Implantação, ao identificar um chamado já aberto para o mesmo imóvel + franquia, reaproveitou <b>um chamado de ocorrência</b> (com prazo de 48 h) para postar as mensagens de vistoria.</p></dd>
+ <dt>Impacto</dt><dd><p>A conversa da ocorrência se mistura com a da vistoria. A franquia deixa de saber a que está respondendo e qual prazo vale — e o chamado deixa de servir como registro limpo da resposta à ocorrência, que é justamente a evidência que a Operação usa.</p></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Ajustado depois de a Operação sinalizar. Chamado de ocorrência deixou de receber mensagens de vistoria ou de implantação — cada assunto no seu próprio chamado.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-qf-7"><h3><span class="no">7</span>Pedido de MCP próprio em vez de seguir a régua</h3>
+<dl class="pcm">
+ <dt>O que aconteceu</dt><dd><p>Em vez de uma automação de envio de ocorrências dentro da régua, a Implantação pediu um <b>MCP próprio</b>: o Claude identificaria o problema quando o time desse o comando e já enviaria a ocorrência. O motivador foram as levas de 23 a 25/09 — <b>58 cards sem evidência</b> (32 da franquia Jessica Cristine + 26 abertura manual), todas com um card por imóvel.</p></dd>
+ <dt class="mel">Como foi resolvido</dt><dd class="mel"><p>Para evitar esse caminho, a Operação (Amanda) e a Ray ajustaram o prompt que o time usa com o Claude para abrir as ocorrências, deixando explícitas a régua v2, a exigência de evidência e a consolidação por franquia.</p></dd>
+</dl>
+</section>
+
+<p class="src">Fonte completa (com anexo dos 26 cards de 24–25/09 e dos 27 imóveis da automação BizOps): análise interna da Operação · Qualidade de Franquias, 25/09/2026.</p>
+</section>
+</div>
+
+<!-- ================== PEDIDO ================== -->
+<div class="ask">
+<h2 style="margin-top:0">O que peço à diretoria</h2>
+<ol>
+ <li><b>Dono único por campo do cadastro.</b> Definir, para taxa de limpeza, quartos, travesseiros, capacidade, conta bancária, operação e comissão, qual é o único sistema autorizado a gravar. A automação nunca sobrescrevendo dado que veio da vistoria.</li>
+ <li><b>Automação segue a régua da área dona do processo.</b> Automação BizOps ou MCP que abre ocorrência precisa validar a régua v2 com Qualidade de Franquias antes de entrar em produção — classificação correta, teto por franquia e evidência obrigatória. Aceitar apoio da área dona quando ela se oferece a construir.</li>
+ <li><b>SLA de comunicação à liderança.</b> Toda vez que a Implantação identifica um problema com fornecedor, franquia ou operação, avisar a liderança em até 48 h. O caso Maraú (27 dias de silêncio, perda de fornecedora exclusiva) não pode repetir.</li>
+ <li><b>Handover formal antes de qualquer saída.</b> Documentação de transição validada com o novo responsável antes da transferência — com auditoria das bases operacionais (Pipefy, Sapron, artefato) logo após.</li>
+ <li><b>Implantação assume a operação da ferramenta que recebe.</b> Não é o BackOffice que integra Lojinha, agente de itens, calculadora ou automação de ocorrências ao processo. Cada entrega vem com etapa, mensagem, responsável e data.</li>
+ <li><b>Fechamento das duplicidades de setembro.</b> Adm/Fin cancela as 27 duplicadas (R$ 6.300) antes do fechamento. Correção do vínculo de operação nos 157 imóveis segue com a tech.</li>
+</ol>
+</div>
+
+<footer class="instfoot">
+ <div class="wm">Seazone<span>Backoffice Franquias</span></div>
+ <div class="who"><b>Rayanne Oliveira</b>rayanne.oliveira@seazone.com.br<br>Documento interno · 28/09/2026</div>
+</footer>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  const id=btn.dataset.tab;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b===btn));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+ });
+});
+
+// Problemas colapsáveis — todos fechados no load, clique no título alterna
+document.querySelectorAll('.prob').forEach(p=>{
+ p.classList.add('collapsed');
+ const h=p.querySelector('h3');
+ if(h) h.addEventListener('click',()=>p.classList.toggle('collapsed'));
+});
+
+// Links âncora do quadro consolidado → problema detalhado (troca aba + abre bloco)
+document.querySelectorAll('a[href^="#prob-"]').forEach(a=>{
+ a.addEventListener('click',e=>{
+  e.preventDefault();
+  const id=a.getAttribute('href').slice(1);
+  const target=document.getElementById(id);
+  if(!target) return;
+  const panel=target.closest('.tab-panel');
+  if(panel && !panel.classList.contains('active')){
+   const tabId=panel.id.replace('tab-','');
+   document.querySelector('.tab-btn[data-tab="'+tabId+'"]').click();
+  }
+  target.classList.remove('collapsed');
+  setTimeout(()=>{
+   target.scrollIntoView({behavior:'smooth',block:'start'});
+   target.classList.add('hl');
+   setTimeout(()=>target.classList.remove('hl'),1800);
+  },90);
+ });
+});
+</script>
+</main></body></html>
