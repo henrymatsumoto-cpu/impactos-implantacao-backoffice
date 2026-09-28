@@ -18,12 +18,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Literata,G
 .wrap{max-width:1080px;margin:0 auto;padding:0 var(--s5) var(--s8)}
 
 
-/* Topbar institucional (bg claro, logo em cor natural) */
-.topbar{background:var(--paper);border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:1080px;margin:0 auto;padding:var(--s3) var(--s5);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--s3)}
-.topbar .sz-logo{color:var(--navy);font-size:26px}
-.topbar .doc-tag{font:600 11px/1 "Bricolage Grotesque";color:var(--ink3);letter-spacing:.14em;text-transform:uppercase}
-
 /* Hero — bloco navy Seazone */
 .hero{background:var(--navy);color:oklch(94% .01 260);padding:var(--s5) 0 var(--s7)}
 .hero-inner{max-width:1080px;margin:0 auto;padding:0 var(--s5)}
@@ -33,6 +27,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Literata,G
 .sz-logo{display:inline-flex;align-items:center;gap:2px;font:700 clamp(22px,3vw,30px)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.04em;vertical-align:middle;color:currentColor}
 .sz-logo .sz-house{display:inline-block;width:.75em;height:.85em;background:none;position:relative;flex-shrink:0}
 .sz-logo .sz-house svg{width:100%;height:100%;display:block}
+.hero .sz-logo{color:#fff;font-size:30px}
+.instfoot .sz-logo{color:var(--navy);font-size:22px}
 
 .hero .mast-date{color:oklch(72% .02 260)}
 .hero .eyebrow{color:var(--coral);margin-bottom:var(--s3)}
@@ -194,16 +190,13 @@ li{margin-bottom:var(--s2)}
 
 </style></head><body>
 
-<div class="topbar">
- <div class="topbar-inner">
-  <span class="sz-logo" role="img" aria-label="Seazone">sea<span class="sz-house"><svg viewBox="0 0 20 22" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M1 8 L10 1 L19 8 L19 21 L13 21 L13 14 L7 14 L7 21 L1 21 Z" fill="#ff6b5c" stroke="#ff6b5c" stroke-width="1.5" stroke-linejoin="round"/><rect x="3" y="3" width="2.2" height="4" fill="#ff6b5c"/></svg></span>zone</span>
-  <span class="doc-tag">Documento interno · Backoffice Franquias · 28/09/2026</span>
- </div>
-</div>
-
 <section class="hero">
  <div class="hero-inner">
-<div class="eyebrow">Para Carol Espindola · Diretora de Franquias</div>
+  <div class="masthead">
+   <div class="wordmark"><span class="sz-logo" role="img" aria-label="Seazone">sea<span class="sz-house"><svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="0" width="2.5" height="8" rx=".8" fill="#ff6b5c"/><path d="M1 11 L11 2 L21 11 L21 22 Q21 23 20 23 L2 23 Q1 23 1 22 Z" fill="#ff6b5c"/></svg></span>zone</span><span>· Backoffice Franquias</span></div>
+   <div class="mast-date">Documento interno · 28/09/2026</div>
+  </div>
+  <div class="eyebrow">Para Carol Espindola · Diretora de Franquias</div>
   <h1>O que a Implantação está causando no BackOffice</h1>
   <p class="lede">Consolidado dos impactos gerados pela área de Implantação nas quatro frentes do BackOffice, no período de <b>15/06 a 25/09/2026</b>.</p>
   <p class="lede">O padrão se repete nas quatro frentes: <b>ferramentas e automações são colocadas em produção sem a devida integração ao processo operacional</b>, fazendo com que o BackOffice absorva o retrabalho e a perda de fornecedores decorrentes dessas implantações.</p>
@@ -661,7 +654,7 @@ li{margin-bottom:var(--s2)}
 </div>
 
 <footer class="instfoot">
- <div class="wm"><span class="sz-logo" role="img" aria-label="Seazone">sea<span class="sz-house"><svg viewBox="0 0 20 22" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M1 8 L10 1 L19 8 L19 21 L13 21 L13 14 L7 14 L7 21 L1 21 Z" fill="#ff6b5c" stroke="#ff6b5c" stroke-width="1.5" stroke-linejoin="round"/><rect x="3" y="3" width="2.2" height="4" fill="#ff6b5c"/></svg></span>zone</span><span>Backoffice Franquias</span></div>
+ <div class="wm"><span class="sz-logo" role="img" aria-label="Seazone">sea<span class="sz-house"><svg viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="0" width="2.5" height="8" rx=".8" fill="#ff6b5c"/><path d="M1 11 L11 2 L21 11 L21 22 Q21 23 20 23 L2 23 Q1 23 1 22 Z" fill="#ff6b5c"/></svg></span>zone</span><span>Backoffice Franquias</span></div>
  <div class="who"><b>Rayanne Oliveira</b>rayanne.oliveira@seazone.com.br<br>Documento interno · 28/09/2026</div>
 </footer>
 
