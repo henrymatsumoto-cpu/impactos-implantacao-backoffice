@@ -199,6 +199,9 @@ li{margin-bottom:var(--s2)}
 .qc-codes a{font:500 12px/1 "Bricolage Grotesque";letter-spacing:.03em;color:var(--ink2);text-decoration:none;padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:var(--soft);transition:color .15s,border-color .15s}
 .qc-codes a:hover{color:var(--blue);border-color:var(--blue)}
 @media (max-width:760px){.qc-links > summary,.qc-codes{padding-left:var(--s5)}}
+.pcm .qc-links{border:1px solid var(--line);border-radius:6px;margin-top:var(--s3)}
+.pcm .qc-links > summary{padding:var(--s2) var(--s3)}
+.pcm .qc-links .tw{padding:0 var(--s3) var(--s3)}
 </style></head><body>
 
 <section class="hero">
@@ -342,7 +345,7 @@ li{margin-bottom:var(--s2)}
  </details>
 
  <details class="qc-area" open>
-  <summary>Fornecedores &amp; Compras <span class="qc-count">7 problemas</span></summary>
+  <summary>Fornecedores &amp; Compras <span class="qc-count">8 problemas</span></summary>
   <details class="qc-sub">
    <summary>Loja Seazone <span>2 problemas</span></summary>
    <ol class="qc-probs">
@@ -364,9 +367,10 @@ li{margin-bottom:var(--s2)}
    </ol>
   </details>
   <details class="qc-sub">
-   <summary>Enxoval <span>1 problema</span></summary>
+   <summary>Enxoval <span>2 problemas</span></summary>
    <ol class="qc-probs">
     <li><span class="num">7</span><a href="#prob-fc-7">Enxoval enviado à franquia errada (SRS1005)</a><span class="qc-size">1.100 km de erro · R$ 592</span><span class="tag o">média</span></li>
+    <li><span class="num">8</span><a href="#prob-fc-8">Agente de adequação gera pedido duplicado ou para imóvel encerrado</a><span class="qc-size">28 casos · 1 finalizado em 2024</span><span class="tag r">alta</span></li>
    </ol>
   </details>
  </details>
@@ -390,7 +394,7 @@ li{margin-bottom:var(--s2)}
 
 <nav class="tabs" role="tablist">
  <button class="tab-btn active" data-tab="admfin" role="tab">Adm/Financeiro <span class="count">9</span></button>
- <button class="tab-btn" data-tab="forn" role="tab">Fornecedores &amp; Compras <span class="count">7</span></button>
+ <button class="tab-btn" data-tab="forn" role="tab">Fornecedores &amp; Compras <span class="count">8</span></button>
  <button class="tab-btn" data-tab="qual" role="tab">Qualidade &amp; Fiscalização <span class="count">7</span></button>
 </nav>
 
@@ -564,6 +568,18 @@ li{margin-bottom:var(--s2)}
  <dt>Tamanho</dt><dd><p><b>R$ 592</b> de frete devolução (R$ 520,95 + R$ 71,05 imposto). Enxoval despachado 1.100 km longe do destino (Maceió/AL em vez de Ilhéus/BA).</p></dd>
  <dt>O que aconteceu</dt><dd><p>Erro humano na calculadora antiga: analista trocou o código do imóvel mas manteve a franquia do pedido anterior. Coordenadora CS Onboarding validou: <i>"foi um erro manual da analista na escolha da franquia"</i>. Custo descontado da comissão do fornecedor (RM).</p></dd>
  <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>A calculadora nova deve travar a franquia pelo código do imóvel — não deixar campo livre para digitação inconsistente.</p></dd>
+</dl>
+</section>
+
+<section class="prob" id="prob-fc-8"><h3><span class="no">8</span>Agente de adequação gera pedido duplicado ou para imóvel encerrado</h3>
+<dl class="pcm">
+ <dt>Tamanho</dt><dd><p><b>3</b> pedidos criados em dobro pelo agente · <b>8</b> imóveis com pedido do agente por cima de pedido manual (3 já pagos ou enviados) · <b>17</b> pedidos gerados depois de o imóvel finalizar (<b>R$ 57.858,48</b>). Caso extremo: <b>CVKB0006</b>, finalizado em <b>03/10/2024</b> e com pedido gerado em 26/09/2026.</p></dd>
+ <dt>O que aconteceu</dt><dd><p>O agente de adequação cria o pedido sem verificar se o imóvel já tem pedido aberto, pago ou enviado, nem se o card está em Finalizado. Resultado: link de pagamento duplicado para o proprietário, risco de enxoval enviado duas vezes (MEI0202, MBHE0805) e pedido de implantação para imóvel encerrado há meses. Levantamento de 29/09/2026 no Jornada Enxoval.</p>
+ <details class="qc-links"><summary>Pedidos duplicados pelo agente <span>3 imóveis</span></summary><div class="tw"><table><thead><tr><th>Imóvel</th><th>Franquia</th><th>Pedidos</th><th>Situação</th></tr></thead><tbody><tr><td><b>MEI0202</b></td><td>Adriano Vidal</td><td>AG-MMEI0202 ×2 (22/08 e 31/08) · R$ 3.585,67 cada</td><td><b>os dois em "enviado"</b> — possível envio em dobro</td></tr><tr><td>PVN0002</td><td>Ana Paula Friedrich</td><td>AG-MPVN0002 ×2 (21/08 e 03/09) · R$ 2.752,63 cada</td><td>os dois em aguardando pagamento</td></tr><tr><td>UST0306</td><td>Jhenyffer Paola</td><td>AG-MUST0306 ×2 (21/08 e 24/08) · R$ 2.061,15 cada</td><td>os dois em aguardando pagamento</td></tr></tbody></table></div></details>
+ <details class="qc-links"><summary>Pedido do agente por cima de pedido manual <span>8 imóveis</span></summary><div class="tw"><table><thead><tr><th>Imóvel</th><th>Pedido manual</th><th>Pedido do agente</th><th>Risco</th></tr></thead><tbody><tr><td><b>OBO0004</b></td><td>P-2055 pagamento confirmado (10/09)</td><td>AG-MOBO0004 ag. pagamento (29/09)</td><td>já pagou e recebe 2º link</td></tr><tr><td><b>HPA0405</b></td><td>P-50008 enviado — Matinali (22/09)</td><td>AG-RHPA0405 ag. pagamento — RM (29/09)</td><td>já recebeu; 2º pedido em outro fornecedor</td></tr><tr><td><b>MBHE0805</b></td><td>P-1622 enviado (25/08)</td><td>AG-MMBHE0805 enviado (18/09)</td><td>enviado duas vezes</td></tr><tr><td>POE0322</td><td>P-2031 ag. pagamento (02/09)</td><td>AG-MPOE0322 enviado (08/09)</td><td>manual ficou aberto</td></tr><tr><td>VJL0004</td><td>P-1607 enviado (24/08)</td><td>AG-MVJL0004 ag. pagamento (05/09)</td><td>já recebeu o enxoval</td></tr><tr><td>MIL0011</td><td>P-50004 ag. pagamento — Matinali (18/09)</td><td>AG-RMIL0011 ag. pagamento — RM (29/09)</td><td>dois links abertos</td></tr><tr><td>VEM1768</td><td>P-1624 ag. pagamento (25/08)</td><td>AG-MVEM1768 ag. pagamento (24/09)</td><td>dois links abertos</td></tr><tr><td>CVKB0006</td><td>recompra RM em caixa de entrada (28/09)</td><td>AG-MCVKB0006 ag. pagamento (26/09)</td><td>imóvel finalizado em 2024</td></tr></tbody></table></div></details>
+ <details class="qc-links"><summary>Pedido gerado depois de o imóvel finalizar <span>17 pedidos</span></summary><div class="tw"><table><thead><tr><th>Imóvel</th><th>Franquia</th><th>Cidade</th><th>Finalizado</th><th>Pedido criado</th><th class="n">Valor (R$)</th></tr></thead><tbody><tr><td><b>CVKB0006</b></td><td>Fabricia Laranja</td><td>Maceió/AL</td><td><b>03/10/2024</b></td><td>26/09/2026</td><td class="n">2.798,46</td></tr><tr><td>CMH0202</td><td>Luís Eduardo Machado</td><td>Florianópolis/SC</td><td>27/02/2025</td><td>22/09/2026</td><td class="n">5.297,54</td></tr><tr><td>EKO0008</td><td>Erica Bianca</td><td>Mata de São João/BA</td><td>25/09/2025</td><td>28/09/2026</td><td class="n">3.202,50</td></tr><tr><td>EMD0012</td><td>Thiago Pinto</td><td>Penha/SC</td><td>19/12/2025</td><td>28/09/2026</td><td class="n">5.097,25</td></tr><tr><td>BSP0008</td><td>Erica Bianca</td><td>Mata de São João/BA</td><td>18/02/2026</td><td>20/09/2026</td><td class="n">4.504,85</td></tr><tr><td>CAI0211</td><td>Erica Bianca</td><td>Mata de São João/BA</td><td>08/04/2026</td><td>20/09/2026</td><td class="n">2.910,11</td></tr><tr><td>CUMD0002</td><td>Itatiana Moura</td><td>Maceió/AL</td><td>26/05/2026</td><td>28/09/2026</td><td class="n">2.959,70</td></tr><tr><td>CDD0077</td><td>Erica Bianca</td><td>Mata de São João/BA</td><td>25/06/2026</td><td>21/09/2026</td><td class="n">6.041,30</td></tr><tr><td>CUMD0003</td><td>Itatiana Moura</td><td>Maceió/AL</td><td>07/07/2026</td><td>28/09/2026</td><td class="n">2.959,70</td></tr><tr><td>ACD0006</td><td>Lucas Silveira</td><td>São José/SC</td><td>23/07/2026</td><td>19/09/2026</td><td class="n">2.662,09</td></tr><tr><td>DAB0001</td><td>Camila Costa</td><td>Porto Seguro/BA</td><td>23/07/2026</td><td>26/09/2026</td><td class="n">2.852,63</td></tr><tr><td>BTR0301</td><td>Jayson Luckemeyer</td><td>Balneário Camboriú/SC</td><td>30/07/2026</td><td>20/09/2026</td><td class="n">2.810,11</td></tr><tr><td>CNO0901</td><td>Marco Munchen</td><td>Balneário Camboriú/SC</td><td>21/08/2026</td><td>14/09/2026</td><td class="n">2.532,64</td></tr><tr><td>AST0103</td><td>Patrícia de Melo</td><td>Porto Seguro/BA</td><td>25/08/2026</td><td>19/09/2026</td><td class="n">3.595,13</td></tr><tr><td>UNQ0908</td><td>Leonardo Fernandes</td><td>Blumenau/SC</td><td>09/09/2026</td><td>22/09/2026</td><td class="n">2.309,74</td></tr><tr><td>ARY0015</td><td>Lucilene Cora</td><td>Porto Seguro/BA</td><td>09/09/2026</td><td>14/09/2026</td><td class="n">3.963,14</td></tr><tr><td>BLS1355</td><td>Agatha Gloria</td><td>Goiânia/GO</td><td>15/09/2026</td><td>20/09/2026</td><td class="n">1.361,59</td></tr></tbody></table></div></details></dd>
+ <dt>O que foi feito</dt><dd><p>Em 30/09 o agente de cancelamento passou a fechar pedido do agente em imóvel finalizado, em churn ou com a etiqueta "Enxoval validado". A 1ª rodada cancelou <b>77 pedidos / R$ 166.349,08</b>, sem tocar em pedido manual. Isso limpa o sintoma, mas o agente de adequação continua gerando os pedidos.</p></dd>
+ <dt class="mel">O que a Implantação precisa fazer</dt><dd class="mel"><p>Travar o agente de adequação: não criar pedido se o código já tiver pedido não cancelado ou se o card estiver em Finalizado ou churn. Conferir com a Matinali os possíveis envios em dobro (MEI0202, MBHE0805) e fechar o 2º link do OBO0004, que já pagou.</p></dd>
 </dl>
 </section>
 
